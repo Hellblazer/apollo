@@ -50,18 +50,9 @@ public class ControlledIdentifierMember implements SigningMember {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if ((obj == null) || !(obj instanceof Member))
+        if (!(obj instanceof Member))
             return false;
         return id.equals(((Member) obj).getId());
-    }
-
-    @Override
-    public Filtered filtered(SigningThreshold threshold, JohnHancock signature, InputStream message) {
-        var verifier = identifier.getVerifier();
-        if (verifier.isEmpty()) {
-            return null;
-        }
-        return verifier.get().filtered(threshold, signature, message);
     }
 
     public CertificateWithPrivateKey getCertificateWithPrivateKey(Instant validFrom, Duration valid,

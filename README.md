@@ -2,7 +2,7 @@
 
 The Apollo Delphinius project is an experimental multi-tenant, distributed system platform. Apollo provides a secure
 communications overlay using Fireflies. The consensus layer is supplied by an asynchronous bft consensus protocol. The
-sql state interface is via a JDBC connection over replicated SQL state machines, supported by checkpointed CHOAM linear
+sql state interface is via a JDBC connection over replicated SQL state machines, supported by check pointed CHOAM linear
 logs. Decentralized identity and key management are provided as a foundational service and integrated into the MTLS grpc
 communication.
 
@@ -48,7 +48,7 @@ Apollo requires JDK 22+ and [Maven](https://maven.apache.org/) 3.9.3 and above
 
 ### Install Maven
 
-The build includes  _mvnw_, and thus there is not need to install Maven. Simply use ./mvnw for all your Maven invocation
+The build includes  _mvnw_, and thus there is no need to install Maven. Simply use ./mvnw for all your Maven invocation
 needs.
 
 See [Installing Apache Maven](https://maven.apache.org/install.html) if you prefer to install Maven.
@@ -96,8 +96,8 @@ profiles that are activated for the platform the build is running on.
 
 ## Modules
 
-Apollo is modularized largely for the purpose of subsystem isolation and reuse. Each module is a Maven module
-under the source root and contains a README.md documenting (such as it is at the moment, lol) the module.
+Apollo is modularized largely for subsystem isolation and reuse. Each module is a Maven module
+under the source root and contains a README.md documenting the module.
 
 * [CHOAM](choam/README.md) - Committee maintenance of replicated state machines
 * [Delphinius](delphinius/README.md) - Bare bones Google Zanzibar clone
@@ -174,7 +174,7 @@ _grpc/target/generated-sources/protobuf/java_ . For JOOQ, the root directory is 
 /target/generated-sources/jooq_ .
 
 Again, I stress that because these generated source directories are under the "(module dir)/target" directory, they are
-removed during the "clean" phase of Maven and consequently must be regenerated in order to compile the rest of the
+removed during the "clean" phase of Maven and consequently must be regenerated to compile the rest of the
 build.
 
 Note that adding these generated source directories to the compiler path is automatically taken care of in the Maven
@@ -242,7 +242,7 @@ Myself, I find that I have to first select the top level Apollo.app module, and 
 sources** (or the equivalent in your IDE). This *should* generate all the sources required for every submodule, so...
 
 Feel free to generate issues and such, and I will look into it as I do want this to be flawless and a good experience. I
-know that's impossible, but it undoubtedly can be made better, and PRs are, of course, a thing.
+know that's impossible, but it undoubtedly can be made better, and PRs are a thing.
 
 Note that also, for inexplicable reasons, Eclipse Maven will determine it needs to invalidate the _grpc_ generated code
 and will thus need to be regenerated. I'm trying to figure out the heck is going on, but when this happens, please
@@ -272,8 +272,6 @@ integrated.
 Apollo is using Aleph-BFT for consensus, in the form of the Ethereal module. CHOAM has now replaced Consortium, and the
 SQL replicated state machine now uses CHOAM for its linear log and transaction model.
 
-Multi-tenant shards are in place and being worked upon currently. This integrates Stereotomy and Delphinius using CHOAM.
-An E2E test of the ReBAC Delphinius service is in development being tested. Full integration of ProcessDomains using
-Fireflies discovery is in development.
-
-
+Multi-tenant shards are in place and apparently working. This integrates Stereotomy and Delphinius using CHOAM in
+a Domain model. E2E testing of the ReBAC Delphinius service is finished and working. Full integration of ProcessDomains
+using Fireflie and discovery - bootstrap to Delphinius Oracle ReBAC E2E testing.
